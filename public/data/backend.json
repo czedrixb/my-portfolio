@@ -1,0 +1,22 @@
+[
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
+    "alt": "Laravel"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+    "alt": "MySQL"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    "alt": "Node"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+    "alt": "MongoDB"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/livewire/livewire-original-wordmark.svg",
+    "alt": "Livewire"
+  }
+]                              
