@@ -1,27 +1,45 @@
 <template>
   <div>
-    <div class="bg-primary">
+    <div class="bg-primary overflow-hidden">
       <div
         class="container mx-auto px-5 md:px-0 max-w-sm md:max-w-screen-sm lg:max-w-screen-md py-8 md:py-5"
       >
         <div
-          class="grid justify-items-center items-center grid-cols-1 md:grid-cols-2 gap-3 mb-5 md:mb-8 lg:max-w-screen-xl"
+          class="grid justify-items-center items-center grid-cols-1 md:grid-cols-2 gap-3 mb-5 md:mb-12 lg:max-w-screen-xl"
         >
           <div>
             <div
-              class="text-black text-left text-2xl font-bold mb-3 md:pt-16 lg:text-4xl"
+              class="flex items-center gap-x-2 animate__animated animate__fadeInLeft"
             >
-              👋 Hi there! I'm Czed.
+              <div
+                class="animate__animated animate__headShake animate__infinite text-2xl lg:text-4xl pb-5 md:pb-0 md:pt-10"
+              >
+                👋
+              </div>
+              <div
+                class="text-black text-left text-2xl font-bold mb-3 md:pt-16 lg:text-4xl"
+              >
+                Hi there! I'm Czed.
+              </div>
             </div>
             <div
-              class="text-black text-left text-md font-medium mb-8 md:text-lg lg:text-xl"
+              class="text-black text-left text-md font-medium mb-8 md:text-lg lg:text-xl animate__animated animate__fadeInLeft animate__delay-1s"
             >
-              I'm a full stack web developer who loves developing websites, and
-              I get excited about turning your ideas into websites that are up
-              and running.
+              I'm a <b>full stack web developer</b> who loves developing
+              websites, and I get excited about turning your ideas into websites
+              that are up and running.
+            </div>
+            <div class="text-center">
+              <a
+                class="btn rounded-full bg-secondary border-0 shadow-sm text-md px-8 hover:bg-[#ddbe08] animate__animated animate__pulse animate__infinite animate__delay-1s hover:shadow-yellow-200 hover:shadow-lg"
+              >
+                View CV
+              </a>
             </div>
           </div>
-          <div class="text-center">
+          <div
+            class="animate__animated animate__bounce animate__infinite animate__delay-1s"
+          >
             <img
               src="/images/img-hero.png"
               class="max-w-full h-auto"
@@ -33,7 +51,7 @@
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-3"
         >
-          <div>
+          <div class="animate__animated animate__fadeInUp">
             <div
               class="relative text-black text-left text-md font-bold mb-5 text-2xl md:text-lg lg:text-xl bg-transparent z-10"
             >
@@ -54,7 +72,7 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="animate__animated animate__fadeInUp animate__delay-1s">
             <div
               class="relative text-black text-left text-md font-bold mb-5 text-2xl md:text-lg lg:text-xl bg-transparent z-10"
             >
@@ -74,7 +92,9 @@
               </div>
             </div>
           </div>
-          <div class="md:col-span-2 lg:col-span-1">
+          <div
+            class="md:col-span-2 lg:col-span-1 animate__animated animate__fadeInUp animate__delay-2s"
+          >
             <div
               class="relative text-black text-left text-md font-bold mb-5 text-2xl md:text-lg lg:text-xl bg-transparent z-10"
             >
@@ -98,7 +118,7 @@
       </div>
     </div>
 
-    <div class="bg-secondary">
+    <div class="bg-secondary overflow-hidden">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#f2eee7"
@@ -110,16 +130,17 @@
         class="container mx-auto px-5 md:px-0 max-w-sm md:max-w-screen-sm py-8 md:py-16"
       >
         <div
-          class="text-black text-center text-2xl font-bold md:text-left mb-12"
+          class="text-black text-center text-2xl font-bold md:text-left md:text-4xl mb-12"
+          data-aos="fade-down"
         >
           Work Experience
         </div>
 
-        <div class="column-1 gap-y-5">
+        <div class="flex flex-col gap-y-5" data-aos="zoom-in">
           <div>
             <div class="relative h-5">
               <svg
-                class="w-5 absolute left-[-3%] md:left-[-2%] bottom-[100%]"
+                class="w-5 absolute left-[-2.5%] md:left-[-1.5%] bottom-[100%]"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 640 512"
               >
@@ -133,22 +154,27 @@
                 <div class="text-lg underline underline-offset-8">
                   R Web Solutions Corp.
                 </div>
-                <div class="text-md mb-3">
-                  Assistant Web Developer Supervisor
-                </div>
+                <div class="text-md">Assistant Web Developer Supervisor</div>
+                <div class="text-md mb-3">December 2023 - August 2024</div>
+
                 <p class="text-md text-justify mb-3">
                   My tech stack here is <b>WAMP</b>. I mainly used
                   <b>Laravel</b> for backend and used native <b>HTML</b>,
                   <b>CSS</b>, <b>Javascript</b>, <b>Tailwind</b>, <b>Vue</b>,
                   and <b>Quasar</b> for frontend. I've also used
-                  <b>Capacitor</b>
-                  converting web to mobile accompanied by
+                  <b>Capacitor</b> converting web to mobile accompanied by
                   <b>Laravel REST API</b>. I used <b>Axios</b> for consuming API
                   and <b>Postman</b> for testing it. I used <b>Mailtrap</b> for
                   mailing. Every website I developed has a custom
-                  <b>Content Management System</b> built by scratch that is
-                  tailor fit for client needs. I used <b>Github</b> for storing
-                  my projects and to collaborate projects with my workmates.
+                  <b>Content Management System</b> built from scratch that is
+                  tailor-fit for client needs. I used <b>Github</b> for storing
+                  my projects and to collaborate on projects with my workmates.
+                  I was exposed to different website categories, such as basic
+                  websites, e-commerce, and booking websites. I've also
+                  integrated payment APIs such as <b>Stripe</b>,
+                  <b>Paymongo</b>, and <b>Maya</b>. Additionally, I've
+                  integrated delivery APIs such as <b>Lalamove</b> and
+                  <b>Transportify</b>.
                 </p>
               </div>
             </div>
@@ -156,7 +182,7 @@
           <div>
             <div class="relative h-5">
               <svg
-                class="w-5 absolute left-[-3%] md:left-[-2%] bottom-[100%]"
+                class="w-5 absolute left-[-2.5%] md:left-[-1.5%] bottom-[100%]"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 640 512"
               >
@@ -170,7 +196,9 @@
                 <div class="text-lg underline underline-offset-8">
                   Provincial Government of Davao de Oro
                 </div>
-                <div class="text-md mb-3">Internship</div>
+                <div class="text-md">Internship</div>
+                <div class="text-md mb-3">February 2022 - April 2022</div>
+
                 <p class="text-md text-justify mb-3">
                   I used templated
                   <b>Bootstrap</b> admin UI for frontend. In backend, I used
@@ -194,12 +222,13 @@
       </svg>
     </div>
 
-    <div class="bg-primary">
+    <div class="bg-primary pb-8">
       <div
         class="container mx-auto px-5 md:px-0 max-w-sm md:max-w-screen-sm lg:max-w-screen-md py-8 md:py-5"
       >
         <div
-          class="relative text-black text-center md:text-left text-md font-bold mb-8 text-2xl bg-transparent z-10"
+          class="relative text-black mb-3 text-center md:text-left text-md font-bold text-2xl md:text-4xl bg-transparent z-10"
+          data-aos="fade-down"
         >
           Projects
 
@@ -207,9 +236,23 @@
             class="absolute h-2 bg-secondary w-20 md:w-20 left-[55%] md:left-[8%] transform -translate-x-1/2 bottom-[8%] -z-10"
           ></div>
         </div>
+        <p
+          class="text-black text-left text-md font-medium mb-16 md:text-lg lg:text-xl animate__animated animate__fadeInLeft"
+        >
+          As a web developer, I work on side projects out of passion and
+          curiosity. These projects allow me to explore new technologies and
+          expand my skill set. I'm always eager to learn, and I enjoy
+          experimenting with the latest tools and frameworks to stay ahead in
+          the ever-evolving world of web development.
+        </p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center">
-          <div class="card bg-base-100 w-96 shadow-xl">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center"
+          data-aos="flip-left"
+        >
+          <div
+            class="card bg-base-100 w-[22rem] sm:w-96 shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
+          >
             <figure>
               <img src="/images/pokefinder.png" alt="Pokéfinder" />
             </figure>
@@ -237,7 +280,9 @@
               </div>
             </div>
           </div>
-          <div class="card bg-base-100 w-96 shadow-xl">
+          <div
+            class="card bg-base-100 w-[22rem] sm:w-96 shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
+          >
             <figure>
               <img src="/images/receiptify.png" alt="Receiptify" />
             </figure>
@@ -268,7 +313,9 @@
               </div>
             </div>
           </div>
-          <div class="card bg-base-100 w-96 shadow-xl">
+          <div
+            class="card bg-base-100 w-[22rem] sm:w-96 shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
+          >
             <figure>
               <img src="/images/pet-pals.png" alt="Receiptify" />
             </figure>
