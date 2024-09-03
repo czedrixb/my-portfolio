@@ -284,6 +284,8 @@
                 <div>
                   Visit
                   <a
+                    target="_blank"
+                    rel="noopener"
                     class="text-success underline"
                     href="https://pokefinder-smoky.vercel.app/"
                     >here</a
@@ -314,6 +316,8 @@
                 <div>
                   Visit
                   <a
+                    target="_blank"
+                    rel="noopener"
                     class="text-success underline"
                     href="https://receiptify-one.vercel.app/"
                     >here</a
