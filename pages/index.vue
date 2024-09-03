@@ -7,7 +7,7 @@
         <div
           class="grid justify-items-center items-center grid-cols-1 md:grid-cols-2 gap-3 mb-5 md:mb-12 lg:max-w-screen-xl"
         >
-          <div>
+          <div class="mb-20 md:mb-0">
             <div
               class="flex items-center gap-x-2 animate__animated animate__fadeInLeft"
             >
@@ -17,9 +17,12 @@
                 👋
               </div>
               <div
-                class="text-black text-left text-2xl font-bold mb-3 md:pt-16 lg:text-4xl"
+                class="text-black text-left text-3xl font-bold mb-3 md:pt-16 lg:text-4xl relative"
               >
                 Hi there! I'm Czed.
+                <div
+                  class="absolute h-2 bg-secondary w-[14rem] md:w-[15rem] left-[61%] transform -translate-x-1/2 bottom-[8%] md:bottom-[3%] -z-10"
+                ></div>
               </div>
             </div>
             <div
@@ -31,9 +34,12 @@
             </div>
             <div class="text-center">
               <a
+                rel="noopener"
+                target="_blank"
+                href="/pdf/CZEDRIX-BARCENA-RESUME-2024.pdf"
                 class="btn rounded-full bg-secondary border-0 shadow-sm text-md px-8 hover:bg-[#ddbe08] animate__animated animate__pulse animate__infinite animate__delay-1s hover:shadow-yellow-200 hover:shadow-lg"
               >
-                View CV
+                View my CV
               </a>
             </div>
           </div>
@@ -58,7 +64,7 @@
               Front End
 
               <div
-                class="absolute h-2 bg-secondary w-32 md:w-20 left-[20%] transform -translate-x-1/2 bottom-[8%] -z-10"
+                class="absolute h-2 bg-secondary w-[6rem] md:w-20 left-[21%] md:left-[34%] transform -translate-x-1/2 bottom-[8%] md:bottom-[16%] -z-10"
               ></div>
             </div>
 
@@ -79,7 +85,7 @@
               Back End
 
               <div
-                class="absolute h-2 bg-secondary w-32 md:w-20 left-[20%] transform -translate-x-1/2 bottom-[8%] -z-10"
+                class="absolute h-2 bg-secondary w-[6rem] md:w-20 left-[21%] md:left-[34%] transform -translate-x-1/2 bottom-[8%] md:bottom-[16%] -z-10"
               ></div>
             </div>
             <div class="grid grid-cols-4 md:grid-cols-3 gap-3 md:gap-5 mb-5">
@@ -101,7 +107,7 @@
               Miscellaneous
 
               <div
-                class="absolute h-2 bg-secondary w-32 md:w-20 left-[20%] transform -translate-x-1/2 bottom-[8%] -z-10"
+                class="absolute h-2 bg-secondary w-[8rem] md:w-[7rem] left-[31%] md:left-[49%] transform -translate-x-1/2 bottom-[8%] md:bottom-[16%] -z-10"
               ></div>
             </div>
             <div class="grid grid-cols-4 md:grid-cols-3 gap-3 md:gap-5 mb-5">
@@ -233,7 +239,7 @@
           Projects
 
           <div
-            class="absolute h-2 bg-secondary w-20 md:w-20 left-[55%] md:left-[8%] transform -translate-x-1/2 bottom-[8%] -z-10"
+            class="absolute h-2 bg-secondary w-20 md:w-[8rem] left-[55%] md:left-[14%] transform -translate-x-1/2 bottom-[8%] -z-10"
           ></div>
         </div>
         <p

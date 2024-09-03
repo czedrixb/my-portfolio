@@ -6,7 +6,7 @@
       <div
         class="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-y-5"
       >
-        <div class="flex gap-x-3 justify-center items-center">
+        <div class="flex gap-x-3 justify-left md:justify-center items-center">
           <div class="rounded-full flex justify-center w-10 bg-white p-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
