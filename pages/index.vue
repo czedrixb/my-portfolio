@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <div class="bg-primary overflow-hidden">
+  <div class="overflow-hidden relative">
+    <div
+      class="bg-hero w-[32rem] h-[92rem] md:h-[77rem] lg:h-[86rem] left-[77%] md:left-[63%] bottom-[45%] md:bottom-[52%] lg:bottom-[44%] absolute"
+    ></div>
+    <div class="bg-primary">
       <div
         class="container mx-auto px-5 md:px-0 max-w-sm md:max-w-screen-sm lg:max-w-screen-md py-8 md:py-5"
       >
@@ -227,6 +230,10 @@
         ></path>
       </svg>
     </div>
+
+    <div
+      class="bg-projects absolute left-[-17%] md:left-[-20%] bottom-[2%] md:bottom-[2%] lg:bottom-[3%] h-[107rem] md:h-[111rem] lg:h-[76rem] w-[11rem] md:w-[26rem] xl:w-[48rem]"
+    ></div>
 
     <div class="bg-primary pb-8">
       <div

@@ -2,7 +2,10 @@
   <div class="bg-primary sticky top-0 z-50">
     <div class="navbar container font-medium text-black mx-auto">
       <div class="navbar-start">
-        <NuxtLink to="/" class="btn btn-ghost text-xl border-0">
+        <NuxtLink
+          to="/"
+          class="btn btn-ghost text-xl border-0 hover:animate-bounce"
+        >
           <span class="font-bold">CZ.</span>
         </NuxtLink>
       </div>
