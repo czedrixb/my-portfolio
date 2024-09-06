@@ -352,6 +352,44 @@
               </div>
             </div>
           </div>
+          <div
+            class="card bg-base-100 w-[22rem] sm:w-96 shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
+          >
+            <figure>
+              <img src="/images/my-notes.png" alt="my-notes" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title items-center">
+                My Notes
+                <div class="badge badge-secondary">In Progress</div>
+              </h2>
+              <p>
+                This web application, built using the TALL stack (Tailwind CSS,
+                Alpine.js, Laravel, and Livewire) with Volt and WireUI, allows
+                users to log in and access only their personal notes. Users can
+                add, edit, and delete their own notes. The application enforces
+                strict access controls, ensuring that only the authorized user
+                can perform actions on their notes, even if someone knows the
+                note's UUID.
+              </p>
+              <div class="card-actions flex justify-between items-center">
+                <div>
+                  Visit
+                  <a
+                    target="_blank"
+                    rel="noopener"
+                    class="text-success underline"
+                    href="https://github.com/czedrixb/my-notes"
+                    >here</a
+                  >
+                </div>
+                <div>
+                  <div class="badge text-white bg-error">Laravel</div>
+                  <div class="badge text-white bg-error">Livewire</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
