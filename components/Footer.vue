@@ -1,10 +1,10 @@
 <template>
   <div class="bg-black">
     <div
-      class="container px-5 md:px-0 max-w-sm md:max-w-screen-sm lg:max-w-screen-md py-5 mx-auto text-white"
+      class="px-5 md:px-0 max-w-sm md:max-w-screen-md lg:max-w-screen-lg py-5 mx-auto text-white"
     >
       <div
-        class="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-y-5"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-y-5"
       >
         <div class="flex gap-x-3 justify-left md:justify-center items-center">
           <div class="rounded-full flex justify-center w-10 bg-white p-2">
@@ -40,6 +40,28 @@
             rel="noopener"
             target="_blank"
             >www.linkedin.com/in/czedrix-barcena</a
+          >
+        </div>
+        <div
+          class="flex gap-x-3 items-center cols-span-1 md:col-span-2 lg:col-span-1 md:justify-center lg:justify-start"
+        >
+          <div class="rounded-full flex justify-center w-10 bg-white p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+              />
+            </svg>
+          </div>
+          <a
+            class="hover:underline underline-offset-4"
+            href="https://github.com/czedrixb"
+            rel="noopener"
+            target="_blank"
+            >https://github.com/czedrixb</a
           >
         </div>
       </div>
