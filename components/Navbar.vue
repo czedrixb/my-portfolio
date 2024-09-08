@@ -3,10 +3,10 @@
     <div class="navbar container font-medium text-black mx-auto">
       <div class="navbar-start">
         <NuxtLink
-          to="/"
-          class="btn btn-ghost text-xl border-0 hover:animate-bounce"
+          to="#hero"
+          class="btn btn-ghost text-xl border-0 hover:animate-bounce font-bold"
         >
-          <span class="font-bold">CZ.</span>
+          CZ.
         </NuxtLink>
       </div>
       <div class="navbar-end">

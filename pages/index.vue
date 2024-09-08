@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden relative">
+  <div class="overflow-hidden relative" id="hero">
     <div
       class="bg-hero w-[32rem] h-[92rem] md:h-[77rem] lg:h-[86rem] left-[77%] md:left-[63%] bottom-[45%] md:bottom-[52%] lg:bottom-[44%] absolute"
     ></div>
@@ -58,7 +58,7 @@
         </div>
 
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-3"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-3 mb-3"
         >
           <div class="animate__animated animate__fadeInUp">
             <div
@@ -124,6 +124,28 @@
             </div>
           </div>
         </div>
+
+        <div class="flex justify-center">
+          <NuxtLink
+            :to="{ path: '/', hash: '#work' }"
+            class="btn flex items-center gap-3 rounded-full bg-secondary border-0 shadow-sm text-md px-8 hover:bg-[#ddbe08] animate__animated animate__pulse animate__infinite animate__delay-1s hover:shadow-yellow-200 hover:shadow-lg"
+          >
+            Work Experience
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-down"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
+              />
+            </svg>
+          </NuxtLink>
+        </div>
       </div>
     </div>
 
@@ -139,13 +161,14 @@
         class="container mx-auto px-5 md:px-0 max-w-sm md:max-w-screen-sm py-8 md:py-16"
       >
         <div
+          id="work"
           class="text-black text-center text-2xl font-bold md:text-left md:text-4xl mb-12"
           data-aos="fade-down"
         >
           Work Experience
         </div>
 
-        <div class="flex flex-col gap-y-5" data-aos="zoom-in">
+        <div class="flex flex-col gap-y-5 mb-3" data-aos="zoom-in">
           <div>
             <div class="relative h-5">
               <svg
@@ -220,6 +243,28 @@
             </div>
           </div>
         </div>
+
+        <div class="flex justify-center">
+          <NuxtLink
+            :to="{ path: '/', hash: '#projects' }"
+            class="btn flex items-center gap-3 rounded-full text-white bg-black border-0 shadow-sm text-md px-8 hover:bg-primary hover:text-black animate__animated animate__pulse animate__infinite animate__delay-1s hover:shadow-primary-200 hover:shadow-lg"
+          >
+            Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-down"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
+              />
+            </svg>
+          </NuxtLink>
+        </div>
       </div>
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -242,6 +287,7 @@
         <div
           class="relative text-black mb-3 text-center md:text-left text-md font-bold text-2xl md:text-4xl bg-transparent z-10"
           data-aos="fade-down"
+          id="projects"
         >
           Projects
 
