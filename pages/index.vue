@@ -187,7 +187,7 @@
                   R Web Solutions Corp.
                 </div>
                 <div class="text-md">Assistant Web Developer Supervisor</div>
-                <div class="text-md mb-3">December 2023 - August 2024</div>
+                <div class="text-md mb-3">December 2022 - August 2024</div>
 
                 <p class="text-md text-justify mb-3">
                   My tech stack here is <b>WAMP</b>. I mainly used
