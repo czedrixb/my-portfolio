@@ -30,5 +30,9 @@
   {
     "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg",
     "alt": "Nuxt"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    "alt": "React"
   }
 ]                    

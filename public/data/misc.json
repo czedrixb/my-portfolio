@@ -2,5 +2,9 @@
   {
     "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
     "alt": "Github"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg",
+    "alt": "Bitbucket"
   }
 ]          

@@ -18,5 +18,9 @@
   {
     "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/livewire/livewire-original-wordmark.svg",
     "alt": "Livewire"
+  },
+  {
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg",
+    "alt": "Firebase"
   }
 ]                              

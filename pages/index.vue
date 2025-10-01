@@ -39,7 +39,7 @@
               <a
                 rel="noopener"
                 target="_blank"
-                href="/pdf/CZEDRIX-BARCENA-RESUME-2024.pdf"
+                href="/pdf/RESUME-2025-CZEDRIX-BARCENA.pdf"
                 class="btn rounded-full bg-secondary border-0 shadow-sm text-md px-8 hover:bg-[#ddbe08] animate__animated animate__pulse animate__infinite animate__delay-1s hover:shadow-yellow-200 hover:shadow-lg"
               >
                 View my CV
@@ -162,13 +162,47 @@
       >
         <div
           id="work"
-          class="text-black text-center text-2xl font-bold md:text-left md:text-4xl mb-12"
+          class="text-black text-center text-2xl font-bold md:text-left md:text-4xl md:ml-[-1%] mb-12"
           data-aos="fade-down"
         >
           Work Experience
         </div>
 
         <div class="flex flex-col gap-y-5 mb-3" data-aos="zoom-in">
+          <div>
+            <div class="relative h-5">
+              <svg
+                class="w-5 absolute left-[-2.5%] md:left-[-1.5%] bottom-[100%]"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512"
+              >
+                <path
+                  d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"
+                />
+              </svg>
+            </div>
+            <div class="border-s-2 border-black px-3">
+              <div class="text-black text-left font-medium mb-8">
+                <div class="text-lg underline underline-offset-8">
+                  W Soft Labs
+                </div>
+                <div class="text-md">Full Stack Web Developer</div>
+                <div class="text-md mb-3">October 2024 - Present</div>
+
+                <p class="text-md text-justify mb-3">
+                  Experienced Fullstack Developer with expertise in Laravel for
+                  backend and Vue, and Nuxt for frontend. Skilled in building
+                  REST APIs, managing databases with MySQL and Firebase, and
+                  integrating tools like Google Analytics, on-page SEO, SMTP
+                  (Mailtrap, Gmail, EmailJS), and KO translations. Proficient
+                  with version control (Bitbucket), project management (Jira),
+                  and API testing (Postman). Hands-on experience deploying with
+                  Vercel and integrating GPT-4 via Replit for advanced
+                  solutions.
+                </p>
+              </div>
+            </div>
+          </div>
           <div>
             <div class="relative h-5">
               <svg
