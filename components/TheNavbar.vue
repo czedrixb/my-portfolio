@@ -1,28 +1,26 @@
 <template>
-  <header
-    class="sticky top-0 z-50 border-b border-hairline/70 bg-ink/80 backdrop-blur-md"
-  >
+  <header class="sticky top-0 z-50 bg-primary/90 backdrop-blur-md">
     <nav
-      class="mx-auto flex h-14 max-w-3xl items-center justify-between px-5 lg:max-w-4xl"
+      class="container mx-auto flex h-16 items-center justify-between px-5 font-medium text-black"
       aria-label="Primary"
     >
       <a
         href="#hero"
-        class="font-mono text-sm font-bold tracking-tightest text-[#EDEDED] transition-colors hover:text-accent"
+        class="text-xl font-bold transition-transform duration-200 hover:-translate-y-0.5"
       >
-        CZ<span class="text-accent">.</span>
+        CZ.
       </a>
 
-      <div class="flex items-center gap-1 sm:gap-2">
+      <div class="flex items-center gap-x-1 sm:gap-x-3">
         <a
           href="#work"
-          class="hidden rounded-full px-3 py-1.5 font-mono text-xs text-muted transition-colors hover:text-[#EDEDED] sm:inline-block"
+          class="hidden rounded-full px-3 py-1.5 text-sm transition-colors hover:text-black/60 sm:inline-block"
         >
           Experience
         </a>
         <a
           href="#projects"
-          class="hidden rounded-full px-3 py-1.5 font-mono text-xs text-muted transition-colors hover:text-[#EDEDED] sm:inline-block"
+          class="hidden rounded-full px-3 py-1.5 text-sm transition-colors hover:text-black/60 sm:inline-block"
         >
           Projects
         </a>
@@ -30,15 +28,15 @@
           rel="noopener"
           target="_blank"
           href="/pdf/RESUME-2025-CZEDRIX-BARCENA.pdf"
-          class="rounded-full px-3 py-1.5 font-mono text-xs text-muted transition-colors hover:text-[#EDEDED]"
+          class="rounded-full px-3 py-1.5 text-sm transition-colors hover:text-black/60"
         >
           Resume
         </a>
         <a
           href="mailto:czedrixb@gmail.com"
-          class="rounded-full bg-accent px-4 py-1.5 font-mono text-xs font-semibold text-ink transition-opacity hover:opacity-85"
+          class="btn btn-secondary rounded-full border-0 shadow-sm transition-shadow hover:bg-[#ddbe08] hover:shadow-lg hover:shadow-yellow-200"
         >
-          Hire me
+          Hire Me
         </a>
       </div>
     </nav>

@@ -30,23 +30,28 @@ export default {
         ],
       },
       colors: {
-        ink: '#0B0B0F',
-        surface: '#14141A',
-        hairline: '#26262E',
-        muted: '#8B8B96',
-        accent: '#FEDB0B',
+        ink: '#000000',
+        surface: '#ffffff',
+        hairline: '#e2ddd4',
+        muted: '#4b4b4b',
+        accent: '#fedb0b',
       },
       letterSpacing: {
         tightest: '-0.045em',
       },
       keyframes: {
         'fade-up': {
-          from: { opacity: '0', transform: 'translateY(12px)' },
+          from: { opacity: '0', transform: 'translateY(16px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-left': {
+          from: { opacity: '0', transform: 'translateX(-24px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both',
+        'fade-up': 'fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
+        'fade-left': 'fade-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
       },
     },
   },
@@ -57,20 +62,8 @@ export default {
     themes: [
       {
         mytheme: {
-          'base-100': '#0B0B0F',
-          'base-200': '#14141A',
-          'base-300': '#26262E',
-          'base-content': '#EDEDED',
-          'primary': '#FEDB0B',
-          'primary-content': '#0B0B0F',
-          'secondary': '#FEDB0B',
-          'secondary-content': '#0B0B0F',
-          'neutral': '#26262E',
-          'neutral-content': '#EDEDED',
-          'info': '#7DD3FC',
-          'success': '#86EFAC',
-          'warning': '#FDE047',
-          'error': '#FCA5A5',
+          'primary': '#f2eee7',
+          'secondary': '#fedb0b',
         },
       },
     ],

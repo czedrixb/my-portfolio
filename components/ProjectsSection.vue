@@ -1,80 +1,87 @@
 <template>
-  <section id="projects" class="relative border-t border-hairline/60 bg-ink">
-    <div class="mx-auto max-w-3xl px-5 py-20 md:py-28 lg:max-w-4xl">
-      <div class="mb-6 flex items-baseline gap-4" data-aos="fade-up">
-        <span class="font-mono text-xs text-accent">02</span>
-        <h2 class="text-2xl font-bold tracking-tight text-[#EDEDED] md:text-3xl">
-          Side projects
-        </h2>
-      </div>
+  <!-- bg-primary matters: the experience section above pulls this one up 1px
+       (-mb-px) so it covers the wave SVG's antialiased bottom row, which would
+       otherwise blend with the yellow band into a hairline. A transparent
+       section cannot cover anything. -->
+  <section class="relative overflow-hidden bg-primary pb-8">
+    <!-- Decorative drifting tile pattern. -->
+    <div
+      class="bg-projects fx-mask-projects pointer-events-none absolute inset-0 opacity-60"
+      aria-hidden="true"
+    ></div>
 
-      <p class="mb-14 max-w-xl leading-relaxed text-muted" data-aos="fade-up">
-        Things I build outside of client work, usually to learn a tool properly
-        rather than just read about it.
+    <BackgroundFx variant="projects" />
+
+    <div
+      class="container relative mx-auto max-w-sm px-5 py-8 md:max-w-screen-sm md:px-0 md:py-5 lg:max-w-screen-md"
+    >
+      <h2
+        id="projects"
+        class="mb-3 scroll-mt-24 text-center text-2xl font-bold text-black md:text-left md:text-4xl"
+        data-aos="fade-down"
+      >
+        Projects
+      </h2>
+
+      <p
+        class="text-md mb-16 text-left font-medium text-black md:text-lg lg:text-xl"
+        data-aos="fade-up"
+      >
+        As a developer, I work on side projects out of passion and curiosity.
+        These projects let me explore new technologies and expand my skill set,
+        usually to learn a tool properly rather than just read about it.
       </p>
 
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div class="grid grid-cols-1 justify-items-center gap-8 lg:grid-cols-2">
         <article
           v-for="(project, index) in projects"
           :key="project.name"
-          class="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-surface transition-colors duration-300 hover:border-muted/50"
-          data-aos="fade-up"
-          :data-aos-delay="(index % 2) * 60"
+          class="card w-[22rem] transform bg-base-100 shadow-xl transition duration-300 ease-in-out hover:-translate-y-2 sm:w-96"
+          data-aos="zoom-in-up"
+          :data-aos-delay="(index % 2) * 100"
         >
-          <img
-            :src="project.image"
-            :alt="`${project.name} screenshot`"
-            class="aspect-[16/10] w-full border-b border-hairline object-cover"
-            loading="lazy"
-            decoding="async"
-          />
+          <figure>
+            <img
+              :src="project.image"
+              :alt="`${project.name} screenshot`"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
 
-          <div class="flex flex-1 flex-col p-5">
-            <div class="mb-3 flex items-center justify-between gap-3">
-              <h3 class="font-semibold text-[#EDEDED]">{{ project.name }}</h3>
-              <span
-                class="shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] leading-relaxed"
-                :class="
-                  project.status === 'In progress'
-                    ? 'border-hairline text-muted'
-                    : 'border-accent/30 text-accent'
-                "
-              >
+          <div class="card-body">
+            <h3 class="card-title items-center">
+              {{ project.name }}
+              <span class="badge" :class="statusClass(project.status)">
                 {{ project.status }}
               </span>
+            </h3>
+
+            <p>{{ project.description }}</p>
+
+            <div class="card-actions items-center justify-between">
+              <div v-if="project.url">
+                Visit
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  class="text-success underline"
+                  :href="project.url"
+                  >{{ project.urlLabel === "View source" ? "source" : "here" }}</a
+                >
+              </div>
+              <div v-else></div>
+
+              <div class="flex flex-wrap justify-end gap-1">
+                <span
+                  v-for="tech in project.tech"
+                  :key="tech"
+                  class="badge border-black/10 bg-white/70 font-mono text-[11px] text-black/70"
+                >
+                  {{ tech }}
+                </span>
+              </div>
             </div>
-
-            <p class="mb-5 flex-1 text-sm leading-relaxed text-muted">
-              {{ project.description }}
-            </p>
-
-            <ul class="mb-5 flex flex-wrap gap-1.5">
-              <li v-for="tech in project.tech" :key="tech">
-                <TechTag :label="tech" />
-              </li>
-            </ul>
-
-            <a
-              v-if="project.url"
-              :href="project.url"
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-1.5 font-mono text-xs text-[#EDEDED] transition-colors hover:text-accent"
-            >
-              {{ project.urlLabel }}
-              <svg
-                class="h-3 w-3"
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M5 11L11 5M11 5H6M11 5V10" />
-              </svg>
-            </a>
           </div>
         </article>
       </div>
@@ -84,4 +91,10 @@
 
 <script setup>
 import projects from "~/assets/data/projects.json";
+
+const statusClass = (status) => {
+  if (status === "Live") return "text-white bg-success border-0";
+  if (status === "Source available") return "text-white bg-info border-0";
+  return "badge-secondary";
+};
 </script>

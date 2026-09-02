@@ -1,115 +1,87 @@
 <template>
   <section id="hero" class="relative overflow-hidden">
-    <!-- Decorative background: dot grid + a single accent glow. -->
+    <!-- Decorative drifting tile pattern. -->
     <div
-      class="bg-dots pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_72%)]"
-      aria-hidden="true"
-    ></div>
-    <div
-      class="bg-glow pointer-events-none absolute left-1/2 top-[-14rem] h-[34rem] w-[34rem] -translate-x-1/2"
+      class="bg-hero fx-mask-hero pointer-events-none absolute inset-0 opacity-50"
       aria-hidden="true"
     ></div>
 
+    <BackgroundFx variant="hero" />
+
     <div
-      class="relative mx-auto max-w-3xl px-5 pb-20 pt-20 md:pb-28 md:pt-28 lg:max-w-4xl"
+      class="container relative mx-auto max-w-sm px-5 py-8 pb-16 md:max-w-screen-sm md:px-0 md:py-5 md:pb-20 lg:max-w-screen-md"
     >
-      <p
-        class="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-3 py-1.5 font-mono text-xs text-muted animate-fade-up"
-      >
-        <span
-          class="status-dot h-1.5 w-1.5 rounded-full bg-accent"
-          aria-hidden="true"
-        ></span>
-        Available for work
-      </p>
-
-      <h1
-        class="mb-6 text-4xl font-bold leading-[1.05] tracking-tightest text-[#EDEDED] animate-fade-up sm:text-5xl md:text-6xl"
-        style="animation-delay: 60ms"
-      >
-        Czedrix Barcena
-      </h1>
-
-      <p
-        class="mb-10 max-w-xl text-lg leading-relaxed text-muted animate-fade-up md:text-xl"
-        style="animation-delay: 120ms"
-      >
-        Full-stack engineer building production
-        <span class="text-[#EDEDED]">web</span>,
-        <span class="text-[#EDEDED]">mobile</span> and
-        <span class="text-[#EDEDED]">AI</span> products — from the database and
-        API through to the interface and the deploy.
-      </p>
-
       <div
-        class="mb-14 flex flex-wrap items-center gap-3 animate-fade-up"
-        style="animation-delay: 180ms"
+        class="mb-8 grid grid-cols-1 items-center justify-items-center gap-3 md:mb-12 md:grid-cols-2 lg:max-w-screen-xl"
       >
-        <a
-          rel="noopener"
-          target="_blank"
-          href="/pdf/RESUME-2025-CZEDRIX-BARCENA.pdf"
-          class="rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-85"
-        >
-          View CV
-        </a>
-        <a
-          rel="noopener"
-          target="_blank"
-          href="https://github.com/czedrixb"
-          class="inline-flex items-center gap-1.5 rounded-full border border-hairline px-6 py-2.5 text-sm font-medium text-[#EDEDED] transition-colors hover:border-muted hover:bg-surface"
-        >
-          GitHub
-          <svg
-            class="h-3 w-3"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
+        <div class="mb-12 md:mb-0">
+          <div class="flex items-center gap-x-2 animate-fade-left">
+            <div class="pb-5 text-2xl md:pb-0 md:pt-10 lg:text-4xl">👋</div>
+            <h1
+              class="relative mb-3 text-left text-3xl font-bold text-black md:pt-16 lg:text-4xl"
+            >
+              Hi there! I'm Czed.
+              <span
+                class="absolute bottom-[8%] left-[61%] -z-10 h-2 w-[14rem] -translate-x-1/2 transform bg-secondary md:bottom-[3%] md:w-[15rem]"
+                aria-hidden="true"
+              ></span>
+            </h1>
+          </div>
+
+          <p
+            class="text-md mb-8 text-left font-medium text-black animate-fade-left md:text-lg lg:text-xl"
+            style="animation-delay: 150ms"
           >
-            <path d="M5 11L11 5M11 5H6M11 5V10" />
-          </svg>
-        </a>
+            I'm a <b>full stack developer</b> building production web, mobile
+            and AI products — from the database and API through to the interface
+            and the deploy.
+          </p>
+
+          <div
+            class="text-center animate-fade-left"
+            style="animation-delay: 300ms"
+          >
+            <a
+              rel="noopener"
+              target="_blank"
+              href="/pdf/RESUME-2025-CZEDRIX-BARCENA.pdf"
+              class="btn text-md rounded-full border-0 bg-secondary px-8 shadow-sm transition-shadow hover:bg-[#ddbe08] hover:shadow-lg hover:shadow-yellow-200"
+            >
+              View my CV
+            </a>
+          </div>
+        </div>
+
+        <div class="float-slow">
+          <img
+            src="/images/img-hero.png"
+            class="h-auto max-w-full"
+            alt="Illustration of a developer at a desk"
+          />
+        </div>
       </div>
 
-      <div class="animate-fade-up" style="animation-delay: 240ms">
-        <div class="rule-fade mb-5" aria-hidden="true"></div>
-        <ul
-          class="flex flex-wrap items-center gap-x-2 gap-y-2 font-mono text-xs text-muted"
+      <div class="flex justify-center" data-aos="fade-up">
+        <a
+          href="#work"
+          class="btn text-md flex items-center gap-3 rounded-full border-0 bg-secondary px-8 shadow-sm transition-shadow hover:bg-[#ddbe08] hover:shadow-lg hover:shadow-yellow-200"
         >
-          <li
-            v-for="(item, index) in headline"
-            :key="item"
-            class="flex items-center gap-x-2 whitespace-nowrap"
+          Work Experience
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+            aria-hidden="true"
           >
-            {{ item }}
-            <span
-              v-if="index < headline.length - 1"
-              class="text-muted/50"
-              aria-hidden="true"
-              >·</span
-            >
-          </li>
-        </ul>
+            <path
+              fill-rule="evenodd"
+              d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
+            />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 </template>
-
-<script setup>
-const headline = [
-  "TypeScript",
-  "Laravel",
-  "Nuxt",
-  "React",
-  "Next.js",
-  "FastAPI",
-  "Kotlin",
-  "PostgreSQL",
-  "Docker",
-  "AWS",
-];
-</script>

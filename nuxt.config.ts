@@ -8,8 +8,8 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en', 'data-theme': 'mytheme' },
       meta: [
-        { name: 'theme-color', content: '#0B0B0F' },
-        { name: 'color-scheme', content: 'dark' },
+        { name: 'theme-color', content: '#f2eee7' },
+        { name: 'color-scheme', content: 'light' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
@@ -25,10 +25,10 @@ export default defineNuxtConfig({
   modules: ['nuxt-aos'],
 
   aos: {
-    duration: 450,
-    easing: 'ease-out',
+    duration: 700,
+    easing: 'ease-out-cubic',
     once: true,
-    offset: 60,
+    offset: 80,
     disableMutationObserver: false,
   },
 })

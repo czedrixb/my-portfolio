@@ -1,43 +1,48 @@
 <template>
-  <footer class="border-t border-hairline/60 bg-ink">
-    <div class="mx-auto max-w-3xl px-5 py-14 lg:max-w-4xl">
-      <p class="mb-8 max-w-md text-lg font-medium leading-snug text-[#EDEDED]">
+  <footer class="bg-black">
+    <div
+      class="mx-auto max-w-sm px-5 py-8 text-white md:max-w-screen-md md:px-0 lg:max-w-screen-lg"
+    >
+      <p class="mb-8 max-w-md text-lg font-medium leading-snug" data-aos="fade-up">
         Open to full-time and freelance work.
         <a
           href="mailto:czedrixb@gmail.com"
-          class="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+          class="text-secondary underline decoration-secondary/40 underline-offset-4 transition-colors hover:decoration-secondary"
           >Get in touch</a
         >.
       </p>
 
-      <ul class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <li v-for="link in links" :key="link.label">
+      <ul class="grid grid-cols-1 justify-center gap-y-5 md:grid-cols-2 lg:grid-cols-3">
+        <li
+          v-for="(link, index) in links"
+          :key="link.label"
+          class="flex items-center gap-x-3"
+          data-aos="fade-up"
+          :data-aos-delay="index * 80"
+        >
+          <span
+            class="flex w-10 shrink-0 justify-center rounded-full bg-white p-2 transition-transform duration-200 hover:scale-110"
+          >
+            <svg
+              class="w-5 fill-black"
+              :viewBox="link.viewBox"
+              aria-hidden="true"
+            >
+              <path :d="link.path" />
+            </svg>
+          </span>
           <a
             :href="link.href"
             :target="link.external ? '_blank' : undefined"
             rel="noopener"
-            class="group flex items-center gap-3 text-sm text-muted transition-colors hover:text-[#EDEDED]"
+            class="truncate underline-offset-4 hover:underline"
+            >{{ link.label }}</a
           >
-            <span
-              class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline transition-colors group-hover:border-muted"
-            >
-              <svg
-                class="h-3.5 w-3.5 fill-current"
-                :viewBox="link.viewBox"
-                aria-hidden="true"
-              >
-                <path :d="link.path" />
-              </svg>
-            </span>
-            <span class="truncate">{{ link.label }}</span>
-          </a>
         </li>
       </ul>
 
-      <div class="rule-fade my-10" aria-hidden="true"></div>
-
       <div
-        class="flex flex-col gap-2 font-mono text-xs text-muted sm:flex-row sm:items-center sm:justify-between"
+        class="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between"
       >
         <p>&copy; {{ year }} Czedrix Barcena</p>
         <p>Built with Nuxt &amp; Tailwind</p>
