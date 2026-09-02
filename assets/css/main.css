@@ -2,14 +2,146 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+}
+
 html {
   scroll-behavior: smooth;
+  background-color: #f2eee7;
 }
+
+body {
+  background-color: #f2eee7;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: #fedb0b;
+  color: #000000;
+}
+
+/* Keyboard focus ring — yellow on cream is invisible, so use black. */
+:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Decorative SVG tile patterns (restored from the original design), each with
+   a slow drift. The background-position travels exactly one tile per cycle,
+   so the loop is seamless.
+   ------------------------------------------------------------------------- */
 
 .bg-hero {
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.42'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  animation: pattern-drift-hero 50s linear infinite;
 }
 
 .bg-projects {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+  animation: pattern-drift-projects 40s linear infinite;
+}
+
+@keyframes pattern-drift-hero {
+  from { background-position: 0 0; }
+  to { background-position: 80px -80px; }
+}
+
+@keyframes pattern-drift-projects {
+  from { background-position: 0 0; }
+  to { background-position: -24px 24px; }
+}
+
+/* ---------------------------------------------------------------------------
+   Soft edge masks. Every decorative layer fades to nothing before it reaches
+   its section boundary, so it never butts up against an opaque neighbour
+   (a wave fill, the navbar) at a visible straight edge.
+   ------------------------------------------------------------------------- */
+
+.fx-mask-soft {
+  -webkit-mask-image: radial-gradient(44% 42% at 50% 50%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(44% 42% at 50% 50%, #000 0%, transparent 100%);
+}
+
+.fx-mask-hero {
+  -webkit-mask-image: radial-gradient(36% 44% at 60% 50%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(36% 44% at 60% 50%, #000 0%, transparent 100%);
+}
+
+.fx-mask-projects {
+  -webkit-mask-image: radial-gradient(32% 42% at 36% 50%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(32% 42% at 36% 50%, #000 0%, transparent 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Animated background: blurred colour blobs drifting behind the cream sections.
+   ------------------------------------------------------------------------- */
+
+.fx-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.fx-blob-a {
+  animation: blob-drift-a 18s ease-in-out infinite alternate;
+}
+
+.fx-blob-b {
+  animation: blob-drift-b 24s ease-in-out infinite alternate;
+}
+
+.fx-blob-c {
+  animation: blob-drift-c 30s ease-in-out infinite alternate;
+}
+
+@keyframes blob-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(4rem, 3rem, 0) scale(1.15); }
+}
+
+@keyframes blob-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(-5rem, 2rem, 0) scale(0.9); }
+}
+
+@keyframes blob-drift-c {
+  from { transform: translate3d(0, 0, 0) scale(0.95); }
+  to { transform: translate3d(3rem, -3.5rem, 0) scale(1.2); }
+}
+
+/* Gentle bob for the hero illustration — replaces the old infinite bounce. */
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(-6px); }
+  50% { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* AOS applies its own transforms inline; neutralise them so nothing
+     stays stuck mid-reveal when motion is disabled. */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

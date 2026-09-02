@@ -1,8 +1,15 @@
-
 # My Portfolio
 
-Welcome to my portfolio! I’m a full stack web developer with nearly 2 years of experience, currently seeking opportunities with innovative companies. I specialize in creating dynamic and efficient web applications, and my portfolio is built using Nuxt.js. I'm passionate about learning new technologies to enhance my skills and deliver exceptional results. Whether freelance or full-time, I'm eager to contribute to exciting projects and grow professionally.
+I'm Czedrix Barcena, a full-stack engineer with nearly 4 years of professional experience building production web, mobile and AI products. I work across Laravel, Nuxt/Vue, React/Next.js, FastAPI and native Android (Kotlin + Jetpack Compose), and I own delivery end to end — API and database design through to CI/CD and deployment.
 
+This portfolio is built with Nuxt 3, Tailwind CSS and daisyUI.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://my-portfolio-five-rho-11.vercel.app/)
