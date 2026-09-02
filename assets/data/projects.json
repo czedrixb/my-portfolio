@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Pokéfinder",
+    "image": "/images/pokefinder.png",
+    "status": "Live",
+    "description": "A Pokémon-themed web app I built to get properly comfortable with Nuxt and consuming third-party APIs. Pokémon is one of my favourite games, which made it an easy project to keep pushing on.",
+    "url": "https://pokefinder-smoky.vercel.app/",
+    "urlLabel": "Visit site",
+    "tech": ["Nuxt", "Vue", "REST API"]
+  },
+  {
+    "name": "Receiptify",
+    "image": "/images/receiptify.png",
+    "status": "Live",
+    "description": "Turns your Spotify listening history into a printable receipt. The frontend is Nuxt and the backend is Node with Express — strictly speaking it didn't need a backend, but I wanted to learn Node properly while building something real.",
+    "url": "https://receiptify-one.vercel.app/",
+    "urlLabel": "Visit site",
+    "tech": ["Nuxt", "Node.js", "Express", "Spotify API"]
+  },
+  {
+    "name": "My Notes",
+    "image": "/images/my-notes.png",
+    "status": "Source available",
+    "description": "A notes app on the TALL stack — Tailwind, Alpine.js, Laravel and Livewire — with Volt and WireUI. Each user sees only their own notes, and authorisation is enforced server-side, so knowing another user's note UUID still gets you nothing.",
+    "url": "https://github.com/czedrixb/my-notes",
+    "urlLabel": "View source",
+    "tech": ["Laravel", "Livewire", "Alpine.js", "Tailwind"]
+  },
+  {
+    "name": "Pet Pals",
+    "image": "/images/pet-pals.png",
+    "status": "In progress",
+    "description": "A mobile app built with Quasar and packaged for mobile through Capacitor. It started from a friend's idea and became a way to combine mobile development with something I actually care about.",
+    "url": null,
+    "urlLabel": null,
+    "tech": ["Quasar", "Vue", "Capacitor"]
+  }
+]

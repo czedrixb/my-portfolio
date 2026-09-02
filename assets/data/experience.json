@@ -1,0 +1,61 @@
+[
+  {
+    "company": "W Soft Labs",
+    "role": "Full Stack Web Developer",
+    "period": "October 2024 — Present",
+    "current": true,
+    "summary": "I work across the full stack on production web, mobile and AI products. On the backend I build REST APIs with Laravel, Node/Express and FastAPI, backed by MySQL, PostgreSQL, Redis and SQLite, with token and session auth, background workers and queues. On the frontend I ship Vue, Nuxt, React and Next.js in TypeScript and Tailwind, including server-side rendering, KO/EN internationalisation and offline-capable PWAs. I also build and release a native Android app in Kotlin with Jetpack Compose. I've integrated LLM APIs and on-device ONNX computer-vision models, and built realtime features with Pusher and Server-Sent Events. I own delivery end to end — Playwright, Vitest, PHPUnit and pytest suites, Bitbucket Pipelines CI/CD, and Docker deployments to AWS Lightsail behind nginx — working in Jira and testing APIs with Postman.",
+    "tech": [
+      "TypeScript",
+      "Laravel",
+      "Nuxt",
+      "Vue",
+      "React",
+      "Next.js",
+      "Python",
+      "FastAPI",
+      "Node.js",
+      "Kotlin",
+      "Jetpack Compose",
+      "PostgreSQL",
+      "MySQL",
+      "Redis",
+      "Docker",
+      "AWS",
+      "nginx",
+      "Playwright",
+      "Bitbucket Pipelines"
+    ]
+  },
+  {
+    "company": "R Web Solutions Corp.",
+    "role": "Assistant Web Developer Supervisor",
+    "period": "December 2022 — August 2024",
+    "current": false,
+    "summary": "My tech stack here was WAMP. I mainly used Laravel for backend and native HTML, CSS, JavaScript, Tailwind, Vue and Quasar for frontend. I used Capacitor to convert web apps to mobile, backed by a Laravel REST API, with Axios for consuming APIs and Postman for testing them. Every website I developed had a custom content management system built from scratch and tailored to the client's needs. I worked across a range of site categories — brochure sites, e-commerce and booking platforms — and integrated payment providers including Stripe, PayMongo and Maya, plus delivery APIs from Lalamove and Transportify.",
+    "tech": [
+      "Laravel",
+      "Vue",
+      "Quasar",
+      "Capacitor",
+      "Tailwind",
+      "MySQL",
+      "Axios",
+      "Stripe",
+      "PayMongo",
+      "Maya",
+      "Lalamove",
+      "Transportify",
+      "Postman",
+      "GitHub"
+    ]
+  },
+  {
+    "company": "Provincial Government of Davao de Oro",
+    "role": "Internship",
+    "period": "February 2022 — April 2022",
+    "current": false,
+    "summary": "I worked on a module for a vehicle transport application system, using Laravel with MySQL on the backend and a templated Bootstrap admin UI on the frontend. Because the project was split into modules across the team, I used Git and GitHub to collaborate and keep my work integrated.",
+    "tech": ["Laravel", "MySQL", "Bootstrap", "Git"]
+  }
+]

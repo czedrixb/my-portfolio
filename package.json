@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "animate.css": "^4.1.1",
     "nuxt": "^3.12.4",
     "nuxt-aos": "^1.2.5",
     "vue": "latest"
