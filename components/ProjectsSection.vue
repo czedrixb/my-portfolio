@@ -12,12 +12,14 @@
 
     <BackgroundFx variant="projects" />
 
+    <!-- The anchor id lives here, not on the <h2>: the heading is an AOS reveal
+         target, and its pre-reveal translate3d would offset the scroll landing. -->
     <div
+      id="projects"
       class="container relative mx-auto max-w-sm px-5 py-8 md:max-w-screen-sm md:px-0 md:py-5 lg:max-w-screen-md"
     >
       <h2
-        id="projects"
-        class="mb-3 scroll-mt-24 text-center text-2xl font-bold text-black md:text-left md:text-4xl"
+        class="mb-3 text-center text-2xl font-bold text-black md:text-left md:text-4xl"
         data-aos="fade-down"
       >
         Projects

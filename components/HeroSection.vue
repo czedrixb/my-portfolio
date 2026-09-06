@@ -53,8 +53,13 @@
         </div>
 
         <div class="float-slow">
+          <!-- width/height are the intrinsic size: they only reserve the aspect ratio
+               so the page below does not shift once this 875 KB image decodes.
+               h-auto/max-w-full keep it fluid. -->
           <img
             src="/images/img-hero.png"
+            width="2000"
+            height="1499"
             class="h-auto max-w-full"
             alt="Illustration of a developer at a desk"
           />
