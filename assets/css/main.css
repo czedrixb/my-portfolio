@@ -8,6 +8,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* 4rem sticky navbar (h-16) + 1rem breathing room. Also the single source of
+     truth for the anchor offset: Nuxt's default scrollBehavior reads this, and
+     parseFloat() of the initial 'auto' would otherwise make its offset NaN. */
+  scroll-padding-top: 5rem;
   background-color: #f2eee7;
 }
 
