@@ -60,16 +60,42 @@
   },
   {
     "name": "My Notes",
-    "image": "/images/my-notes.png",
+    "image": "/images/my-notes/dashboard.jpg",
     "status": "Source available",
-    "description": "A notes app on the TALL stack — Tailwind, Alpine.js, Laravel and Livewire — with Volt and WireUI. Each user sees only their own notes, and authorisation is enforced server-side, so knowing another user's note UUID still gets you nothing.",
+    "description": "A pastel masonry notes board on the TALL stack, with live search and a confirm-then-undo-proof delete. Every note is a UUID row that only its owner's session can touch, enforced on the server rather than hidden in the UI.",
+    "detail": "My Notes is a Laravel app built on the TALL stack — Tailwind, Alpine.js, Laravel and Livewire — using Volt single-file components so a page's markup and its class sit in one file instead of split across a controller and a Blade view. I built it to get past tutorial-level CRUD into the parts that actually matter: authorisation that holds even if a note's ID leaks, and a board that feels responsive without shipping a SPA framework for it.",
     "url": "https://github.com/czedrixb/my-notes",
     "urlLabel": "View source",
-    "tech": ["Laravel", "Livewire", "Alpine.js", "Tailwind"],
+    "tech": ["Laravel", "Livewire", "Volt", "Alpine.js", "Tailwind"],
     "features": [
-      "Each user sees only their own notes",
-      "Authorisation is enforced server-side — knowing another user's note UUID gets you nothing",
-      "Built on the TALL stack with Volt and WireUI"
+      "Notes key on a UUID, not a sequential id, so a note's URL never hints at how many exist or whose turn is next",
+      "Every read, edit and delete re-checks a server-side policy — holding someone else's note UUID still gets you nothing",
+      "Search runs live against the title and body, debounced 300ms, with a skeleton shimmer while the round-trip is in flight",
+      "Each card takes a deterministic pastel hashed from its own UUID, so it keeps its colour across every re-render",
+      "Deleting asks for confirmation, animates the card out, then commits, with a toast on success",
+      "Livewire's wire:navigate moves between the board, the editor and the profile page without a full page reload"
+    ],
+    "gallery": [
+      {
+        "src": "/images/my-notes/dashboard.jpg",
+        "alt": "My Notes masonry board with pastel note cards, one card hovered to reveal its actions",
+        "caption": "The board. Each card's colour is hashed from its own UUID, and the open/delete actions only appear on hover."
+      },
+      {
+        "src": "/images/my-notes/search.jpg",
+        "alt": "My Notes search filtering the board down to a single matching note",
+        "caption": "Search runs live against title and body, debounced 300ms, with a skeleton shimmer while it's in flight."
+      },
+      {
+        "src": "/images/my-notes/editor.jpg",
+        "alt": "My Notes note editor with title and content fields",
+        "caption": "The editor. Loading it re-checks the update policy — another user's note UUID gets you a 403, not a form."
+      },
+      {
+        "src": "/images/my-notes/login.jpg",
+        "alt": "My Notes login screen",
+        "caption": "Signed out. Every route past this point is re-authorised per note, not just per session."
+      }
     ]
   },
   {
