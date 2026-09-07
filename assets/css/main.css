@@ -31,6 +31,54 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
+   Project detail dialog.
+
+   The panel and its backdrop are ordinary elements inside the dialog, animated
+   by Vue <Transition>, so the dialog itself is stripped back to a transparent
+   full-viewport frame. Tailwind's preflight only zeroes the padding; the user
+   agent's margin, border, background and max-width all have to go explicitly.
+
+   ::backdrop is left transparent on purpose — it cannot be driven by Vue
+   transition classes and vanishes the instant close() runs, which would cut
+   the exit fade short.
+   ------------------------------------------------------------------------- */
+
+dialog.project-dialog {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+dialog.project-dialog::backdrop {
+  background: transparent;
+}
+
+/* The panel rises on its own rather than as part of the backdrop's transition,
+   so the full-viewport click surface behind it is never scaled. */
+.panel-rise {
+  animation: panel-rise 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes panel-rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+/* The blurred blobs are the most expensive thing on the page. Parking them
+   while a dialog is open keeps the panel's entrance smooth on weaker GPUs. */
+body.modal-open .fx-blob,
+body.modal-open .bg-hero,
+body.modal-open .bg-projects {
+  animation-play-state: paused;
+}
+
+/* ---------------------------------------------------------------------------
    Decorative SVG tile patterns (restored from the original design), each with
    a slow drift. The background-position travels exactly one tile per cycle,
    so the loop is seamless.
@@ -136,6 +184,11 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    /* Delays have to go too. `animate-fade-up` uses `both` fill mode, so a
+       staggered element would otherwise sit at opacity 0 for the whole delay
+       and only then pop in — the reveal is skipped, but the wait is not. */
+    animation-delay: 0.01ms !important;
+    transition-delay: 0.01ms !important;
   }
 
   /* AOS applies its own transforms inline; neutralise them so nothing
