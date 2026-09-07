@@ -34,69 +34,46 @@
         usually to learn a tool properly rather than just read about it.
       </p>
 
-      <div class="grid grid-cols-1 justify-items-center gap-8 lg:grid-cols-2">
-        <article
+      <!-- auto-rows-fr makes every row the same height, so all four cards
+           match rather than each row sizing to its own tallest card. -->
+      <div class="grid auto-rows-fr grid-cols-1 justify-items-center gap-8 lg:grid-cols-2">
+        <ProjectCard
           v-for="(project, index) in projects"
           :key="project.name"
-          class="card w-[22rem] transform bg-base-100 shadow-xl transition duration-300 ease-in-out hover:-translate-y-2 sm:w-96"
-          data-aos="zoom-in-up"
-          :data-aos-delay="(index % 2) * 100"
-        >
-          <figure>
-            <img
-              :src="project.image"
-              :alt="`${project.name} screenshot`"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-
-          <div class="card-body">
-            <h3 class="card-title items-center">
-              {{ project.name }}
-              <span class="badge" :class="statusClass(project.status)">
-                {{ project.status }}
-              </span>
-            </h3>
-
-            <p>{{ project.description }}</p>
-
-            <div class="card-actions items-center justify-between">
-              <div v-if="project.url">
-                Visit
-                <a
-                  target="_blank"
-                  rel="noopener"
-                  class="text-success underline"
-                  :href="project.url"
-                  >{{ project.urlLabel === "View source" ? "source" : "here" }}</a
-                >
-              </div>
-              <div v-else></div>
-
-              <div class="flex flex-wrap justify-end gap-1">
-                <span
-                  v-for="tech in project.tech"
-                  :key="tech"
-                  class="badge border-black/10 bg-white/70 font-mono text-[11px] text-black/70"
-                >
-                  {{ tech }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
+          :project="project"
+          :index="index"
+          @open="(trigger) => openProject(project, trigger)"
+        />
       </div>
     </div>
+
+    <!-- One dialog for the whole section, not one per card. -->
+    <ProjectDetailModal :project="selected" @closed="onClosed" />
   </section>
 </template>
 
 <script setup>
+import { nextTick, ref } from "vue";
 import projects from "~/assets/data/projects.json";
 
-const statusClass = (status) => {
-  if (status === "Live") return "text-white bg-success border-0";
-  if (status === "Source available") return "text-white bg-info border-0";
-  return "badge-secondary";
+const selected = ref(null);
+const trigger = ref(null);
+
+const openProject = (project, element) => {
+  trigger.value = element;
+  selected.value = project;
+};
+
+/*
+ | Cleared only once the dialog has finished leaving — the panel still reads
+ | `project` while its exit animation plays. Focus goes back to the card that
+ | opened it; the browser's own restoration is unreliable here because the
+ | cards live in a v-for and any re-render invalidates its saved reference.
+ */
+const onClosed = () => {
+  const element = trigger.value;
+  selected.value = null;
+  trigger.value = null;
+  nextTick(() => element?.focus());
 };
 </script>

@@ -6,16 +6,57 @@
     "description": "A Pokémon-themed web app I built to get properly comfortable with Nuxt and consuming third-party APIs. Pokémon is one of my favourite games, which made it an easy project to keep pushing on.",
     "url": "https://pokefinder-smoky.vercel.app/",
     "urlLabel": "Visit site",
-    "tech": ["Nuxt", "Vue", "REST API"]
+    "tech": ["Nuxt", "Vue", "REST API"],
+    "features": [
+      "Browses Pokémon data pulled live from a public REST API",
+      "Built on Nuxt to learn its data fetching and rendering properly",
+      "Chosen as a subject I would actually keep working on"
+    ]
   },
   {
-    "name": "Receiptify",
-    "image": "/images/receiptify.png",
-    "status": "Live",
-    "description": "Turns your Spotify listening history into a printable receipt. The frontend is Nuxt and the backend is Node with Express — strictly speaking it didn't need a backend, but I wanted to learn Node properly while building something real.",
-    "url": "https://receiptify-one.vercel.app/",
-    "urlLabel": "Visit site",
-    "tech": ["Nuxt", "Node.js", "Express", "Spotify API"]
+    "name": "Sentrix",
+    "image": "/images/sentrix/storefront.jpg",
+    "status": "Source available",
+    "description": "A storefront and staff back office for a security and surveillance retailer trading across eight branches. Stock, pricing and order visibility are all per branch, so opening a branch is a database insert rather than a deployment.",
+    "detail": "Sentrix is a Laravel 13 API behind Sanctum with a Vue 3 single-page app on top, serving two audiences from the same data: customers browsing a branch's catalogue, and staff working orders, stock, vouchers and content from behind a permission wall. I built it to get properly comfortable with per-branch inventory and an authorisation model that actually holds up on the server rather than just hiding buttons.",
+    "url": "https://github.com/czedrixb/sentrix",
+    "urlLabel": "View source",
+    "tech": ["Laravel", "Vue 3", "Pinia", "Tailwind", "MySQL"],
+    "features": [
+      "Stock lives on a branch–product pivot, so availability, pricing and orders all follow the branch the customer picked",
+      "Checkout is a single transaction that locks the stock rows first, so a failure can never leave some lines decremented and others not",
+      "Seventeen permissions across seven staff roles — a branch manager can correct their own shelf count without seeing another branch's orders",
+      "Vouchers come in four types, are capped at the cart value, and record every redemption",
+      "Money is handled in centavos throughout and never touches a float",
+      "Staff dashboard with a paid-revenue chart and a searchable low-stock panel"
+    ],
+    "gallery": [
+      {
+        "src": "/images/sentrix/storefront.jpg",
+        "alt": "Sentrix storefront home page with a hero banner",
+        "caption": "The storefront. Everything below is scoped to the branch chosen in the header."
+      },
+      {
+        "src": "/images/sentrix/shop.jpg",
+        "alt": "Sentrix shop catalogue with category and brand filters",
+        "caption": "Catalogue filtered by category and brand — the stock counts are that branch's, not a global total."
+      },
+      {
+        "src": "/images/sentrix/product.jpg",
+        "alt": "Sentrix product detail page showing availability at the selected branch",
+        "caption": "Product detail, with availability resolved against the selected branch."
+      },
+      {
+        "src": "/images/sentrix/admin-dashboard.jpg",
+        "alt": "Sentrix staff dashboard with order counts and a paid-revenue chart",
+        "caption": "The staff dashboard — order pipeline, revenue this month, and paid revenue over time."
+      },
+      {
+        "src": "/images/sentrix/admin-orders.jpg",
+        "alt": "Sentrix admin order queue listing orders across branches",
+        "caption": "The order queue. Order numbers are sequential per day, and rows are scoped by role."
+      }
+    ]
   },
   {
     "name": "My Notes",
@@ -24,7 +65,12 @@
     "description": "A notes app on the TALL stack — Tailwind, Alpine.js, Laravel and Livewire — with Volt and WireUI. Each user sees only their own notes, and authorisation is enforced server-side, so knowing another user's note UUID still gets you nothing.",
     "url": "https://github.com/czedrixb/my-notes",
     "urlLabel": "View source",
-    "tech": ["Laravel", "Livewire", "Alpine.js", "Tailwind"]
+    "tech": ["Laravel", "Livewire", "Alpine.js", "Tailwind"],
+    "features": [
+      "Each user sees only their own notes",
+      "Authorisation is enforced server-side — knowing another user's note UUID gets you nothing",
+      "Built on the TALL stack with Volt and WireUI"
+    ]
   },
   {
     "name": "Pet Pals",
@@ -33,6 +79,10 @@
     "description": "A mobile app built with Quasar and packaged for mobile through Capacitor. It started from a friend's idea and became a way to combine mobile development with something I actually care about.",
     "url": null,
     "urlLabel": null,
-    "tech": ["Quasar", "Vue", "Capacitor"]
+    "tech": ["Quasar", "Vue", "Capacitor"],
+    "features": [
+      "Built with Quasar and packaged for mobile through Capacitor",
+      "Grew out of a friend's idea for reuniting lost pets with their owners"
+    ]
   }
 ]
