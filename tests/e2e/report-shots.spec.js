@@ -92,13 +92,22 @@ test("after — modal gallery advanced", async ({ page }) => {
   await page.screenshot({ path: `${OUT}/modal-gallery.png` });
 });
 
-test("after — modal degraded (Pet Pals)", async ({ page }) => {
+test("after — modal open on Forkcast", async ({ page }) => {
   await page.setViewportSize(TALL);
   await ready(page, "/");
-  await page.getByRole("button", { name: "View details for Pet Pals" }).click();
+  await page.getByRole("button", { name: "View details for Forkcast" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.evaluate(() => new Promise((r) => setTimeout(r, 1200)));
-  await page.screenshot({ path: `${OUT}/modal-petpals.png` });
+  await page.screenshot({ path: `${OUT}/modal-forkcast.png` });
+});
+
+test("after — modal degraded (Pokéfinder)", async ({ page }) => {
+  await page.setViewportSize(TALL);
+  await ready(page, "/");
+  await page.getByRole("button", { name: "View details for Pokéfinder" }).click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await page.evaluate(() => new Promise((r) => setTimeout(r, 1200)));
+  await page.screenshot({ path: `${OUT}/modal-pokefinder.png` });
 });
 
 test("after — modal on mobile", async ({ page }) => {

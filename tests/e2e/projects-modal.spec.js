@@ -75,6 +75,33 @@ test("gallery advances by thumbnail, arrow key and next button", async ({ page }
   await expect(counter).toHaveText("Screenshot 1 of 5");
 });
 
+test("the Forkcast gallery has four screenshots and links to its source", async ({ page }) => {
+  await gotoProjects(page);
+  await trigger(page, "Forkcast").click();
+
+  const dialog = page.getByRole("dialog");
+  const stage = dialog.locator("img").first();
+  const counter = dialog.locator('[aria-live="polite"]');
+
+  await expect(dialog).toHaveAccessibleName("Forkcast");
+  await expect(dialog.getByRole("button", { name: /^Show screenshot/ })).toHaveCount(4);
+  await expect(counter).toHaveText("Screenshot 1 of 4");
+  await expect(stage).toHaveAttribute("src", /today/);
+
+  await dialog.getByRole("button", { name: "Show screenshot 3" }).click();
+  await expect(counter).toHaveText("Screenshot 3 of 4");
+  await expect(dialog.locator("img").first()).toHaveAttribute("src", /search/);
+
+  await dialog.getByRole("button", { name: "Next screenshot" }).click();
+  await expect(counter).toHaveText("Screenshot 4 of 4");
+  await expect(dialog.locator("img").first()).toHaveAttribute("src", /insights/);
+
+  await expect(dialog.getByRole("link", { name: "View source" })).toHaveAttribute(
+    "href",
+    "https://github.com/czedrixb/forkcast",
+  );
+});
+
 test("Escape closes the dialog and returns focus to the card", async ({ page }) => {
   await gotoProjects(page);
   await trigger(page, "Sentrix").click();
@@ -145,14 +172,14 @@ test("page scroll is locked while open and released after", async ({ page }) => 
 
 test("a project with one screenshot degrades without a thumbnail strip", async ({ page }) => {
   await gotoProjects(page);
-  await trigger(page, "Pet Pals").click();
+  await trigger(page, "Pokéfinder").click();
 
   const dialog = page.getByRole("dialog");
-  await expect(dialog).toHaveAccessibleName("Pet Pals");
+  await expect(dialog).toHaveAccessibleName("Pokéfinder");
   await expect(dialog.getByRole("button", { name: /^Show screenshot/ })).toHaveCount(0);
   await expect(dialog.getByRole("button", { name: "Next screenshot" })).toHaveCount(0);
-  // No url on this project, so no source link either.
-  await expect(dialog.getByRole("link")).toHaveCount(0);
+  // This project does have a url, unlike the gallery it has none of — the link still renders.
+  await expect(dialog.getByRole("link", { name: "Visit site" })).toBeVisible();
 });
 
 test("the card lift is not overridden by AOS", async ({ page }) => {
