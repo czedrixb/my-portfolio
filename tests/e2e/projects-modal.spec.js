@@ -250,6 +250,12 @@ test("the thumbnail strip does not shift as captions swap", async ({ page }) => 
   await gotoProjects(page);
   await trigger(page, "Sentrix").click();
   await expect(page.getByRole("dialog")).toBeVisible();
+  // Let the panel's own 320ms entrance animation (.panel-rise) finish before
+  // sampling: "visible" doesn't wait for opacity/transform to settle, so
+  // without this the first couple of samples below can catch the tail of the
+  // rise (translateY easing to 0) and register as drift that has nothing to
+  // do with the caption swap under test.
+  await page.waitForTimeout(400);
 
   const strip = page.locator(".panel-rise div.flex.gap-2.overflow-x-auto");
   const top = () => strip.evaluate((e) => Math.round(e.getBoundingClientRect().top));
@@ -264,4 +270,98 @@ test("the thumbnail strip does not shift as captions swap", async ({ page }) => 
     }
   }
   expect(Math.max(...samples) - Math.min(...samples)).toBe(0);
+});
+
+test.describe("on a mobile viewport", () => {
+  test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
+
+  test("the close button stays reachable after scrolling the panel", async ({ page }) => {
+    await gotoProjects(page);
+    await trigger(page, "Sentrix").click();
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    const closeButton = dialog.getByRole("button", { name: "Close" });
+
+    // The panel is taller than a phone screen; scroll it to the bottom the
+    // way a reader would. On `main` the close button is `absolute` on the
+    // panel and scrolls away with it — this is exactly what left the dialog
+    // unclosable on mobile.
+    await dialog.locator(".panel-rise").evaluate((panel) => {
+      panel.closest(".overflow-y-auto").scrollTo(0, panel.scrollHeight);
+    });
+    await expect(closeButton).toBeInViewport();
+
+    await closeButton.click();
+    await expect(dialog).toBeHidden();
+  });
+
+  test("the close button is a comfortable touch target", async ({ page }) => {
+    await gotoProjects(page);
+    await trigger(page, "Sentrix").click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+    // Let the panel's .panel-rise entrance animation (320ms, scales from 0.96
+    // to 1) finish — measuring mid-animation would catch a shrunk box and
+    // report a false-negative on the target size.
+    await page.waitForTimeout(400);
+
+    const box = await page
+      .getByRole("dialog")
+      .getByRole("button", { name: "Close" })
+      .boundingBox();
+    expect(box.width).toBeGreaterThanOrEqual(44);
+    expect(box.height).toBeGreaterThanOrEqual(44);
+  });
+
+  test("gallery arrows are visible without a hover", async ({ page }) => {
+    await gotoProjects(page);
+    await trigger(page, "Sentrix").click();
+
+    const dialog = page.getByRole("dialog");
+    const nextChip = dialog.getByRole("button", { name: "Next screenshot" }).locator("span");
+    // No hover and no focus performed — on `main` this chip is `opacity-0`
+    // and only ever reached via `group-hover`/`focus-visible`, so it would
+    // never be visible on a device with no pointer to hover with.
+    await expect.poll(() => nextChip.evaluate((el) => getComputedStyle(el).opacity)).toBe("1");
+  });
+
+  test("tapping either half of the screenshot navigates the gallery", async ({ page }) => {
+    await gotoProjects(page);
+    await trigger(page, "Sentrix").click();
+
+    const dialog = page.getByRole("dialog");
+    const counter = dialog.locator('[aria-live="polite"]');
+    const stage = dialog.getByRole("group", { name: "Sentrix screenshots" });
+    const box = await stage.boundingBox();
+
+    await expect(counter).toHaveText("Screenshot 1 of 5");
+
+    // Left quarter: previous, wrapping back to the last screenshot.
+    await page.mouse.click(box.x + box.width * 0.25, box.y + box.height / 2);
+    await expect(counter).toHaveText("Screenshot 5 of 5");
+
+    // Right quarter: next, wrapping forward to the first again.
+    await page.mouse.click(box.x + box.width * 0.75, box.y + box.height / 2);
+    await expect(counter).toHaveText("Screenshot 1 of 5");
+  });
+});
+
+test("tapping either half of the screenshot navigates the gallery on desktop too", async ({
+  page,
+}) => {
+  await gotoProjects(page);
+  await trigger(page, "Sentrix").click();
+
+  const dialog = page.getByRole("dialog");
+  const counter = dialog.locator('[aria-live="polite"]');
+  const stage = dialog.getByRole("group", { name: "Sentrix screenshots" });
+  const box = await stage.boundingBox();
+
+  await expect(counter).toHaveText("Screenshot 1 of 5");
+
+  await page.mouse.click(box.x + box.width * 0.75, box.y + box.height / 2);
+  await expect(counter).toHaveText("Screenshot 2 of 5");
+
+  await page.mouse.click(box.x + box.width * 0.25, box.y + box.height / 2);
+  await expect(counter).toHaveText("Screenshot 1 of 5");
 });

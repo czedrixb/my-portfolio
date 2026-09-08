@@ -41,14 +41,35 @@
             tabindex="-1"
             class="panel-rise relative w-full max-w-3xl rounded-2xl bg-surface p-5 shadow-2xl outline-none sm:p-7"
           >
-            <button
-              type="button"
-              class="absolute right-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full text-xl leading-none text-black/50 transition hover:bg-black/5 hover:text-black"
-              aria-label="Close"
-              @click="requestClose"
+            <!-- Sticky header ---------------------------------------------
+                 The panel itself isn't the scroll container (the `fixed
+                 inset-0 overflow-y-auto` ancestor above is), so `sticky top-0`
+                 pins this bar to the top of the screen for the panel's whole
+                 height. On a phone the panel can run well past the viewport;
+                 without this the old absolutely-positioned close button
+                 scrolled away with the screenshot and became unreachable.
+                 Negative margins bleed the bar to the panel's edges through
+                 its own p-5/p-7 padding; px-5/px-7 puts the inset back. -->
+            <header
+              class="sticky top-0 z-30 -mx-5 -mt-5 mb-5 flex items-center gap-3 rounded-t-2xl border-b border-hairline bg-surface px-5 py-3 sm:-mx-7 sm:-mt-7 sm:px-7"
             >
-              &times;
-            </button>
+              <h2 class="flex min-w-0 flex-1 flex-wrap items-center gap-2 text-xl font-bold tracking-tightest text-ink sm:text-2xl">
+                <span id="project-detail-title">{{ project.name }}</span>
+                <span class="badge" :class="statusClass(project.status)">
+                  {{ project.status }}
+                </span>
+              </h2>
+              <!-- h-11/w-11 = 44px, the minimum comfortable touch target
+                   (the old button was 36px and had no background). -->
+              <button
+                type="button"
+                class="-mr-2 grid h-11 w-11 shrink-0 place-items-center rounded-full text-2xl leading-none text-black/60 transition hover:bg-black/5 hover:text-black"
+                aria-label="Close"
+                @click="requestClose"
+              >
+                &times;
+              </button>
+            </header>
 
             <!-- Gallery ------------------------------------------------- -->
             <!-- Border and cream ground matter here: most of these screenshots
@@ -83,22 +104,42 @@
                 />
               </Transition>
 
+              <!-- Prev/next are full-height, half-width hit areas rather than
+                   small buttons in the corners: tapping anywhere on the left
+                   or right half of the picture navigates, not just the chip.
+                   The chip itself is `opacity-0` and revealed on hover/focus
+                   as before, plus `[@media(hover:none)]` — touch devices have
+                   no hover, so without that override the chips (and thus any
+                   sign the gallery is navigable) never appeared. Focus styling
+                   lives on the chip, not the button, via focus-visible-within
+                   the group, so the ring wraps the round chip instead of the
+                   half-image hit area. -->
               <template v-if="shots.length > 1">
                 <button
                   type="button"
-                  class="absolute left-2 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-lg shadow-md opacity-0 transition-opacity duration-200 hover:bg-white focus-visible:opacity-100 group-hover/stage:opacity-100"
+                  class="group/nav absolute inset-y-0 left-0 z-10 flex w-1/2 items-center justify-start px-2 focus:outline-none"
                   aria-label="Previous screenshot"
                   @click="show(activeIndex - 1)"
                 >
-                  &lsaquo;
+                  <span
+                    aria-hidden="true"
+                    class="grid h-10 w-10 place-items-center rounded-full bg-white/90 text-lg shadow-md opacity-0 transition-opacity duration-200 group-hover/stage:opacity-100 group-hover/nav:bg-white group-focus-visible/nav:opacity-100 group-focus-visible/nav:outline group-focus-visible/nav:outline-2 group-focus-visible/nav:outline-offset-2 group-focus-visible/nav:outline-black [@media(hover:none)]:opacity-100"
+                  >
+                    &lsaquo;
+                  </span>
                 </button>
                 <button
                   type="button"
-                  class="absolute right-2 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-lg shadow-md opacity-0 transition-opacity duration-200 hover:bg-white focus-visible:opacity-100 group-hover/stage:opacity-100"
+                  class="group/nav absolute inset-y-0 right-0 z-10 flex w-1/2 items-center justify-end px-2 focus:outline-none"
                   aria-label="Next screenshot"
                   @click="show(activeIndex + 1)"
                 >
-                  &rsaquo;
+                  <span
+                    aria-hidden="true"
+                    class="grid h-10 w-10 place-items-center rounded-full bg-white/90 text-lg shadow-md opacity-0 transition-opacity duration-200 group-hover/stage:opacity-100 group-hover/nav:bg-white group-focus-visible/nav:opacity-100 group-focus-visible/nav:outline group-focus-visible/nav:outline-2 group-focus-visible/nav:outline-offset-2 group-focus-visible/nav:outline-black [@media(hover:none)]:opacity-100"
+                  >
+                    &rsaquo;
+                  </span>
                 </button>
               </template>
             </div>
@@ -165,17 +206,12 @@
             </div>
 
             <!-- Copy ---------------------------------------------------- -->
-            <!-- The id sits on the name alone: aria-labelledby pointing at the
-                 whole heading would make the dialog announce itself as
+            <!-- The name + status badge now live in the sticky header above;
+                 the id there is still what aria-labelledby (on the dialog)
+                 points at, so the id must stay on the name alone — pointing
+                 at the whole heading would make the dialog announce itself as
                  "Sentrix Source available". -->
-            <h2 class="mt-6 flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tightest text-ink">
-              <span id="project-detail-title">{{ project.name }}</span>
-              <span class="badge" :class="statusClass(project.status)">
-                {{ project.status }}
-              </span>
-            </h2>
-
-            <p class="mt-2 text-muted">{{ body }}</p>
+            <p class="mt-6 text-muted">{{ body }}</p>
 
             <template v-if="bullets.length">
               <h3 class="mt-6 text-sm font-semibold uppercase tracking-widest text-black/40">
