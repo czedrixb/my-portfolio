@@ -100,6 +100,12 @@ test("the Forkcast gallery has four screenshots and links to its source", async 
     "href",
     "https://github.com/czedrixb/forkcast",
   );
+
+  // The scan provider cascade replaced a mock fallback — guard against the
+  // old "runs with no API keys at all" claim silently coming back.
+  await expect(dialog).toContainText(/model that actually answered/);
+  await expect(dialog).not.toContainText(/no API keys at all/);
+  await expect(dialog).not.toContainText(/mock/i);
 });
 
 test("Escape closes the dialog and returns focus to the card", async ({ page }) => {
