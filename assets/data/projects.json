@@ -102,14 +102,15 @@
     "name": "Forkcast",
     "image": "/images/forkcast/today.jpg",
     "status": "Source available",
-    "description": "An AI calorie tracker built mobile-first: point a camera at a plate and a vision model names the foods and estimates portions, which land as calories and macros on the day's log. The scan sits behind an adapter with three providers, so the app runs with no API keys at all.",
-    "detail": "Forkcast is a Next.js 16 App Router app on TypeScript and Tailwind v4, with Prisma 7 over Supabase Postgres and hand-rolled session auth rather than a drop-in provider. I built it to work through two things properly: a camera path that still works when the browser refuses getUserMedia, and an LLM dependency a reviewer can run without holding a key or paying for a single request.",
+    "description": "An AI calorie tracker built mobile-first: point a camera at a plate and a vision model names the foods and estimates portions, which land as calories and macros on the day's log. The scan cascades across three providers, so one dead key or one bad response doesn't take the feature down.",
+    "detail": "Forkcast is a Next.js 16 App Router app on TypeScript and Tailwind v4, with Prisma 7 over Supabase Postgres and hand-rolled session auth rather than a drop-in provider. I built it to work through two things properly: a camera path that still works when the browser refuses getUserMedia, and a vision dependency that degrades across providers instead of dying with whichever one went down.",
     "url": "https://github.com/czedrixb/forkcast",
     "urlLabel": "View source",
     "tech": ["Next.js", "TypeScript", "Prisma", "Tailwind", "Postgres"],
     "features": [
-      "The scan calls Anthropic when a key is set, OpenAI when only that one is, and a deterministic mock below that — so the app and its Playwright suite run at zero cost with no keys at all",
-      "Camera capture asks for the rear-facing stream and drops to a file picker when the browser refuses, with explicit denied and error states instead of a dead viewfinder",
+      "The scan tries Anthropic, then OpenAI, then Gemini's free tier, falling through on any failure — and the result names the model that actually answered rather than treating them as interchangeable",
+      "Camera capture asks for the rear-facing stream and drops to a file picker when the browser refuses, with explicit denied and error states instead of a dead viewfinder — and a LAN-HTTPS dev server, since getUserMedia only runs in a secure context and a phone is never on localhost",
+      "A scanned entry keeps its photo: a thumbnail on the day's log that opens full-size, while manually searched entries keep a plain source icon",
       "Onboarding computes targets from a Mifflin-St Jeor BMR, scales it by activity level, applies the goal delta, then splits 30/40/30 into protein, carbs and fat",
       "Each log entry stores its own nutrition snapshot, so correcting a food later never rewrites what yesterday's total already said",
       "A migration turns on row-level security across every table, so Supabase's anonymous PostgREST endpoint returns nothing while Prisma's role bypasses it",
@@ -118,13 +119,13 @@
     "gallery": [
       {
         "src": "/images/forkcast/today.jpg",
-        "alt": "Forkcast today dashboard with a calorie ring, macro bars and meal sections",
-        "caption": "The day's log. The ring counts up from the entries, not from a stored total."
+        "alt": "Forkcast today dashboard with a calorie ring, macro bars and meal sections, a scanned entry showing its photo as a thumbnail",
+        "caption": "The day's log. Scanned entries keep their photo as a tap-to-enlarge thumbnail; searched ones keep a plain icon."
       },
       {
         "src": "/images/forkcast/scan.jpg",
-        "alt": "Forkcast scan results listing detected foods with portion steppers",
-        "caption": "A finished scan. Every detected item is editable before anything is logged."
+        "alt": "Forkcast scan results listing detected foods with portion steppers and the model that analyzed them",
+        "caption": "A finished scan, naming whichever provider actually answered. Every detected item is editable before anything is logged."
       },
       {
         "src": "/images/forkcast/search.jpg",
