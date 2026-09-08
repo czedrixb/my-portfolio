@@ -119,6 +119,36 @@ test("after — modal on mobile", async ({ page }) => {
   await page.screenshot({ path: `${OUT}/modal-mobile.png` });
 });
 
+// Arrow visibility depends on the `(hover: none)` media query, which only
+// reflects reality with a touch-capable context — plain setViewportSize does
+// not trigger it.
+test.describe("touch context", () => {
+  test.use({ hasTouch: true, isMobile: true, viewport: { width: 375, height: 812 } });
+
+  test("after — gallery arrows visible without hover on touch", async ({ page }) => {
+    await ready(page, "/");
+    await page.getByRole("button", { name: "View details for Sentrix" }).click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+    await page.evaluate(() => new Promise((r) => setTimeout(r, 900)));
+    await page
+      .getByRole("dialog")
+      .locator(".group\\/stage")
+      .screenshot({ path: `${OUT}/gallery-arrows-touch-after.png` });
+  });
+
+  test("before — gallery arrows visible without hover on touch", async ({ page }) => {
+    test.skip(!BASELINE, "BASELINE_URL not set");
+    await ready(page, `${BASELINE}/`);
+    await page.getByRole("button", { name: "View details for Sentrix" }).click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+    await page.evaluate(() => new Promise((r) => setTimeout(r, 900)));
+    await page
+      .getByRole("dialog")
+      .locator(".group\\/stage")
+      .screenshot({ path: `${OUT}/gallery-arrows-touch-before.png` });
+  });
+});
+
 test("before — projects grid and hover", async ({ page }) => {
   test.skip(!BASELINE, "BASELINE_URL not set");
 
@@ -130,4 +160,30 @@ test("before — projects grid and hover", async ({ page }) => {
   await card.hover();
   await page.evaluate(() => new Promise((r) => setTimeout(r, 800)));
   await card.screenshot({ path: `${OUT}/card-hover-before.png` });
+});
+
+// The bug this branch fixes only shows once the mobile panel is scrolled: the
+// close button (or the sticky header replacing it) is at the top of the
+// panel, and on a phone the panel runs well past the viewport.
+async function mobileScrolledToBottom(page, url, outName) {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await ready(page, url);
+  await page.getByRole("button", { name: "View details for Sentrix" }).click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await page.evaluate(() => new Promise((r) => setTimeout(r, 500)));
+  await page.evaluate(() => {
+    const panel = document.querySelector(".panel-rise");
+    panel.closest(".overflow-y-auto")?.scrollTo(0, panel.scrollHeight);
+  });
+  await page.evaluate(() => new Promise((r) => setTimeout(r, 300)));
+  await page.screenshot({ path: `${OUT}/${outName}` });
+}
+
+test("after — modal on mobile, scrolled to the bottom", async ({ page }) => {
+  await mobileScrolledToBottom(page, "/", "modal-mobile-scrolled-after.png");
+});
+
+test("before — modal on mobile, scrolled to the bottom", async ({ page }) => {
+  test.skip(!BASELINE, "BASELINE_URL not set");
+  await mobileScrolledToBottom(page, `${BASELINE}/`, "modal-mobile-scrolled-before.png");
 });
